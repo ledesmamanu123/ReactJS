@@ -1,0 +1,13 @@
+.navbar_local{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(245, 131, 154);
+}
+.ul_local{
+    list-style: none;
+    display: flex;
+}
+.li_local{
+    margin:0 10px;
+}
