@@ -3,12 +3,13 @@ import Juegos from '../icons/Juegos';
 import Consolas from '../icons/Consolas';
 import Accesorios from '../icons/Accesorios';
 import ItemList from '../ItemList/ItemList';
+import { Link } from 'react-router-dom';
 import './ItemListContainer.css'
 const ItemListContainer = () => {
     const categories = [
-        {id: 1, name:"Juegos", icon:<Juegos />, path:"/Juegos"},
-        {id: 2, name:"Consolas", icon:<Consolas />, path:"/Consolas"},
-        {id: 3, name:"Accesorios", icon:<Accesorios />, path:"/Accesorios"}
+        {id: 1, name:"Juegos", icon:<Juegos />, href:"/Juegos"},
+        {id: 2, name:"Consolas", icon:<Consolas />, href:"/Consolas"},
+        {id: 3, name:"Accesorios", icon:<Accesorios />, href:"/Accesorios"}
     ];
     const products = [
         {id: 1, title:"Playstation 2", price:800 , description:" segunda consola de videojuegos de Sony", stock: 5, imgUrl:"../#"},
@@ -37,7 +38,7 @@ const ItemListContainer = () => {
     <>
         <ul className='lista_categorias'>
             {categories.map((category, index)=>{
-                return <li className='item_categorias'> {category.icon} <a href={category.path} key={index} id={category.id}>{category.name}</a></li>
+                return <li className='item_categorias'> {category.icon}<Link to={`${category.href}/${category.id}`} key={index} id={category.id}>{category.name}</Link></li>
             })}
         </ul>
     </>
