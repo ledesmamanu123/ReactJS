@@ -1,44 +1,25 @@
 import React from 'react'
-import Juegos from '../icons/Juegos';
-import Consolas from '../icons/Consolas';
-import Accesorios from '../icons/Accesorios';
+import JuegosIcon from '../icons/JuegosIcon';
+import ConsolasIcon from '../icons/ConsolasIcon';
+import AccesoriosIcon from '../icons/AccesoriosIcon';
 import ItemList from '../ItemList/ItemList';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ItemListContainer.css'
 const ItemListContainer = () => {
+
+    
     const categories = [
-        {id: 1, name:"Juegos", icon:<Juegos />, href:"/Juegos"},
-        {id: 2, name:"Consolas", icon:<Consolas />, href:"/Consolas"},
-        {id: 3, name:"Accesorios", icon:<Accesorios />, href:"/Accesorios"}
-    ];
-    const products = [
-        {id: 1, title:"Playstation 2", price:800 , description:" segunda consola de videojuegos de Sony", stock: 5, imgUrl:"../#"},
-        {id: 2, title:"Playstation 3", price:1000 , description:"tercera consola de videojuegos de Sony", stock: 10, imgUrl:"../#"},
-        {id: 3, title:"Playstation 4", price:1200 , description:"cuarta consola de videojuegos de Sony", stock: 15, imgUrl:"../#"}
+        {id: 1, name:"Juegos", icon:<JuegosIcon />, href:"/Juegos"},
+        {id: 2, name:"Consolas", icon:<ConsolasIcon />, href:"/Consolas"},
+        {id: 3, name:"Accesorios", icon:<AccesoriosIcon />, href:"/Accesorios"}
     ];
     console.log({categories})
-
-    //Creamos la promise
-    const getProducts = new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve(products)
-        },2000);
-    })
-
-    //Creamos la funcion de resuelto
-    function isResolved (resolve){
-       <ItemList items={resolve} />
-       console.log(resolve)
-    }
-
-    //Le decimos a la promise que ejecute la funcion
-    getProducts.then(isResolved)
-
   return (
     <>
         <ul className='lista_categorias'>
             {categories.map((category, index)=>{
-                return <li className='item_categorias'> {category.icon}<Link to={`${category.href}/${category.id}`} key={index} id={category.id}>{category.name}</Link></li>
+                return <li className='item_categorias' key={index}> {category.icon}<Link to={`${category.href}/${category.id}`} id={category.id}>{category.name}</Link></li>
             })}
         </ul>
     </>
