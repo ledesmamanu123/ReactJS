@@ -1,14 +1,15 @@
 import React from 'react'
 import './Title.css'
 import Playz from '../icons/Playz'
+import { Link } from 'react-router-dom'
 const Title = ({name}) => {
   return (
-    <a href="/">
+    <Link to={"/"}>
       <div className='container_titulo'>
         <Playz />
         <h1 className='titulos'>{name}</h1>
       </div>
-    </a>
+    </Link>
   )
 }
 
