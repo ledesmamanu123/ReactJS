@@ -7,9 +7,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.titulos{
     text-align: center;
+    color: rgb(41, 41, 41);
+}
+.tituloCards{
+    color: white;
 }
 img{
     width: 100%;

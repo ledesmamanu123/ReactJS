@@ -11,7 +11,7 @@ const ItemListContainer = ({products}) => {
     const [productos, setProductos] = useState([])
 
 useEffect(()=>{
-  if (params.categoryid =! undefined) {
+  if (params.categoryid !== undefined) {
     let filtroProductos = products.filter((producto)=>{
       return parseInt (params.categoryid) === producto.category;
     })
@@ -30,7 +30,7 @@ useEffect(()=>{
       setProductos(response);
     })
   }
-  },[])
+  },[params.categoryid])
   console.log(productos)
   return (
     <section className='sectionCards'>

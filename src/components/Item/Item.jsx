@@ -1,14 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Item.css'
 const Item = ({item}) => {
   return (
 
-    <div className='containerCards'>
+    <Link to={`item/${item.id}`} className='containerCards'> 
+    <div>
       <img src={item.imgUrl} alt={item.title} />
-      <h4>{item.title}</h4>
+      <h4 className='tituloCards'>{item.title}</h4>
       <p>{item.description}</p>
       <span>${item.price}</span>
     </div>
+    </Link>
 
   )
 }

@@ -7,7 +7,7 @@ const Title = ({name}) => {
     <Link to={"/"}>
       <div className='container_titulo'>
         <Playz />
-        <h1 className='titulos'>{name}</h1>
+        <h1 className='titulo'>{name}</h1>
       </div>
     </Link>
   )

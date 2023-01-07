@@ -1,12 +1,13 @@
 import React from 'react'
 
 const ItemDetail = ({item}) => {
+  console.log({item})
   return (
-    <div>
-        <img src={item.img} alt={item.name} />
-        <h4>{item.name}</h4>
-        <p>{item.desc}</p>
-        <span>{item.price}</span>
+    <div className='containerCards'>
+      <img src={item.imgUrl} alt={item.title} />
+      <h4 className='tituloCards'>{item.title}</h4>
+      <p>{item.description}</p>
+      <span>${item.price}</span>
     </div>
   )
 }
