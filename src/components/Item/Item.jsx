@@ -1,20 +1,15 @@
 import React from 'react'
-const Item = (props, {key}) => {
-  console.log(props)
+import './Item.css'
+const Item = ({item}) => {
   return (
-    <>
-      <div className='CardContainer' key={key} id = {props.id}>
-        <div>
-          <img src={props.imgUrl} alt={props.title} />
-          <h3>{props.title}</h3>
-        </div>
-        <div>
-          <p>{props.stock}</p>
-          <span>$ {props.price}</span>
-          <p>{props.desc}</p>
-        </div>
-      </div>
-    </>
+
+    <div className='containerCards'>
+      <img src={item.imgUrl} alt={item.title} />
+      <h4>{item.title}</h4>
+      <p>{item.description}</p>
+      <span>${item.price}</span>
+    </div>
+
   )
 }
 
