@@ -23,7 +23,7 @@ useEffect(()=>{
       setTimeout(()=>{
         resolve(products)
         console.log("adentro")
-      },2000)
+      },1000)
     })
     promiseProducts.then((response)=>{
       console.log("atrodne")
@@ -33,9 +33,12 @@ useEffect(()=>{
   },[params.categoryid])
   console.log(productos)
   return (
+    <>
+    <h1 className='tituloCatalogo'>Catálogo</h1>
     <section className='sectionCards'>
-    <ItemList productos={productos}/>
+      <ItemList productos={productos}/>
     </section>
+    </>
   )
 }
 

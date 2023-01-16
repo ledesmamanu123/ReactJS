@@ -3,8 +3,10 @@ import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailCotainer from './components/ItemDetailContainer/ItemDetailContainer';
+import Cart from './components/Cart/Cart'
 
-//Importamos el array de productos
+
+//Array de productos
 import { products } from './components/mocks';
 
 
@@ -17,6 +19,7 @@ function App() {
       <Route exact path='/category/:categoryid' element={<ItemListContainer products={products} />}/>
       <Route exact path='/category/:categoryid/item/:id' element={<ItemDetailCotainer products={products} />}/>
       <Route exact path='/item/:id' element={<ItemDetailCotainer products={products} />}/>
+      <Route exact path='/cart' element={<Cart />}/>
     </Routes>
     </BrowserRouter>
   )

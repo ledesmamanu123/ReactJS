@@ -70,7 +70,7 @@ export const products = [
     price:30, 
     description:"juego creado por Rockstar Studios", 
     stock:100, 
-    imgUrl:"https://compass-ssl.xbox.com/assets/a0/4f/a04f2744-74d9-4668-8263-e0261fbea869.jpg?n=GTA-V_GLP-Page-Hero-1084_1920x1080.jpg", 
+    imgUrl:"https://i.pinimg.com/236x/d4/20/b4/d420b45e309335e0a30f0451b70a53dd.jpg", 
     category:1
     },
 
