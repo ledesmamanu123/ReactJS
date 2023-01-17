@@ -6,7 +6,7 @@ import './ItemListContainer.css'
 const ItemListContainer = ({products}) => {
   //Guardamos los parametros que nos llegan en params
     let params = useParams();
-    console.log(params.categoryid)
+
   //Declaramos un useState para guardar el estado del producto
     const [productos, setProductos] = useState([])
 
@@ -16,22 +16,21 @@ useEffect(()=>{
       return parseInt (params.categoryid) === producto.category;
     })
       setProductos(filtroProductos)
-      console.log(filtroProductos)
-      console.log("verdaddeor")
+
   } else {
     const promiseProducts = new Promise((resolve, reject) => {
       setTimeout(()=>{
         resolve(products)
-        console.log("adentro")
+
       },1000)
     })
     promiseProducts.then((response)=>{
-      console.log("atrodne")
+
       setProductos(response);
     })
   }
   },[params.categoryid])
-  console.log(productos)
+
   return (
     <>
     <h1 className='tituloCatalogo'>Catálogo</h1>

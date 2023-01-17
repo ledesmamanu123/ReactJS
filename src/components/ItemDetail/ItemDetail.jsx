@@ -1,13 +1,33 @@
 import React from 'react'
 import ItemCount from '../ItemCount/ItemCount'
 import './ItemDetail.css'
-import { useState } from 'react'
-const ItemDetail = ({item}) => {
-  const {cantidad, setCantidad} = useState(0);
+import { useState, useContext } from 'react'
+import { cartContext } from '../../context/cartContext'
+import { Link } from 'react-router-dom'
 
-  const handlerAddCount = (quantityOnAdd)=>{
-    setCantidad(quantityOnAdd)
-    console.log(cantidad)
+
+const ItemDetail = ({item}) => {
+
+  //useState
+  const [cantidad, setCantidad] = useState();
+  //useContext
+  const { addToCart } = useContext(cartContext)
+
+  
+  
+  //Seteamos el estado "cantidad" con el estado que nos llega del children
+  const onAdd = (qtyOnAdd)=>{
+    setCantidad(qtyOnAdd)
+
+  }
+
+
+  //Funcion para agregar al carrito
+  const handlerAddToCart = () =>{
+    console.log({paso:1, cantidad, item})
+
+    //Ejecutamos la funcion que traemos del cartContext
+    addToCart(item, cantidad)
   }
 
   return (
@@ -16,7 +36,8 @@ const ItemDetail = ({item}) => {
       <h4 className='tituloCards'>{item.title}</h4>
       <p className='descCards'>{item.description}</p>
       <span className='precioCards'>${item.price}</span>
-      <ItemCount stock={item.stock} onChangeQuantity={(e)=>handlerAddCount(e)}/>
+      <ItemCount stock={item.stock} onChangeQuantity={onAdd}/>
+      <Link to={"/cart"}><button className='btnComprar' onClick={()=>{handlerAddToCart()}}>Comprar</button></Link>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Home.css'
 const Home = ({productos}) => {
-  console.log({productos})
+
   return (
     <>
     <h1 className='titulos'>Catálogo</h1>
