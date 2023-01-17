@@ -11,9 +11,11 @@
 }
 .light{
     background-color: rgb(84, 156, 238);
+    fill: black;
 }
 .dark{
     background-color: rgb(29, 29, 29);
+    fill: white;
 }
 .lista_categorias{
     list-style: none;

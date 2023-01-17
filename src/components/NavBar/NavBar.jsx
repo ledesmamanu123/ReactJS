@@ -25,7 +25,7 @@ const changeTheme = (e) =>{
   return (
     <>
       <nav className={`${theme === 'dark'? "dark" : "light"}`}>
-          <div className='title_cart'>
+          <div className={`title_cart ${theme === 'dark'? "dark" : "light"}`}>
               <Title name="Playz" />
               <CartWidget />
           </div>
