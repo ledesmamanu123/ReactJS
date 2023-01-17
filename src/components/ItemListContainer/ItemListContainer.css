@@ -1,22 +1,4 @@
-.lista_categorias{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    background-color: rgb(189, 225, 255);
-    padding: 5px;
-    margin: 0;
-}
-a{
-    text-decoration: none;
-    margin: 0 4px;
-}
-.item_categorias{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 16px;
-    font-weight: bold;
-}
+
 .sectionCards{
     display: flex;
     justify-content: center;

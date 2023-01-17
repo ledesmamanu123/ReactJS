@@ -5,6 +5,35 @@
     padding: 0 10px;
     font-size: 1.2rem;
 }
-nav{
+.lista_theme{
+    display: flex;
+    align-items: center;
+}
+.light{
     background-color: rgb(84, 156, 238);
+}
+.dark{
+    background-color: rgb(29, 29, 29);
+}
+.lista_categorias{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(189, 225, 255);
+    padding: 5px;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    margin: 0 4px;
+}
+.item_categorias{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px;
+    font-weight: bold;
+}
+.ul_navbar{
+    display: flex;
 }
