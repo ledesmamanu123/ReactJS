@@ -39,7 +39,7 @@ const changeTheme = (e) =>{
                     return <li className='item_categorias' key={index}> {category.icon}<Link to={`category/${category.id}`} id={category.id} name={category.name}>{category.name}</Link></li>
                 })}
             </ul>
-            <div></div>
+            <div style={{width:120}}></div>
           </div>
         </nav>
     </>
