@@ -15,8 +15,7 @@ useEffect(()=>{
     let filtroProductos = products.filter((producto)=>{
       return parseInt (params.categoryid) === producto.category;
     })
-      setProductos(filtroProductos)
-
+      setProductos(filtroProductos);
   } else {
     const promiseProducts = new Promise((resolve, reject) => {
       setTimeout(()=>{
@@ -29,7 +28,7 @@ useEffect(()=>{
       setProductos(response);
     })
   }
-  },[params.categoryid])
+},[params.categoryid])
 
   return (
     <>

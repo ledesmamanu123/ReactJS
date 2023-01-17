@@ -4,11 +4,18 @@ import { cartContext } from '../../context/cartContext'
 
 
 const Cart = () => {
-  const context = useContext(cartContext)
-
-  console.log(context)
+  const {cart, removeList, deleteItem, totalPrice, totalItem} = useContext(cartContext)
+  console.log(cart)
   return (
-    <div>Cart</div>
+    <div>
+      <h1>Carrio</h1>
+      {cart.map((item)=>{
+          return <>
+          <img src={item.imgUrl} alt="" />
+          
+          </>
+      })}
+    </div>
   )
 }
 

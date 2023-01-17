@@ -1,81 +1,63 @@
-// import { createContext, useReducer } from "react";
-// import { cartReducer } from "./cartReducer";
-
-// export const cartContext = createContext([])
-
-
-// const initialState = {
-//     quantity: 0,
-//     product: {},
-//     arrayProductos:[]
-// }
-
-
-// export const CartContextProvider = ({ children }) => {
-//     const [state, dispatch] = useReducer(cartReducer, initialState)
-//     function addToCart(item, qty){
-//          dispatch({
-//             type:"ADD_ITEMS",
-//             payload: {item, qty}
-//          })
-//     }
-//     function removeList() {
-//     }
-//     const deleteItem = (id) => {
-//         	//implementa la funcionalidad para borrar un producto del carrito
-//     }
-//     return (
-//         <cartContext.Provider value={{addToCart, removeList, deleteItem}}>
-//             { children }
-//         </cartContext.Provider>
-//     );
-// }
-
-import {createContext, useReducer} from 'react'
-import { cartReducer} from './cartReducer'
+import {createContext, useState} from 'react'
 
 //Creamos un contexto
-export const cartContext = createContext(null)
-
-
-//Inicializamos el estado del useReducer
-const initialState = {
-    //Guardamos cantidad, el producto, y el array de productos agregados
-    quantity: 0,
-    product:{},
-    productsAdded:[]
-}
+export const cartContext = createContext([])
 
 
 
 export const CartContextProvider =({children}) =>{
-    //Declaramos el useReducer, le mandamos nuestra funcion cartReducer, y el estado inicial
-    const [state,dispatch] = useReducer(cartReducer,initialState)
+    //Declaramos el useState
+    const [cart, setCart] = useState([])
+    console.log(cart)
 
-    function addToCart(item, qty){
-        console.log(state)
-        console.log({paso:2, qty, item})
-        dispatch({ //implementamos la funcion dispatch, para ejecutar la funcion de cartReducer
-            type:"ADD_ITEMS",
-            payload:{qty, item}
-        })
-    }
-    const deleteItem = (id) => {	//implementa la funcionalidad para borrar un producto del carrito
-    }
-    const removeList = () => {	//implementa la funcionalidad para dejar el carrito vacío
+    //Funcion para evitar repetidos
+    const isInCart = (id) => 
+    cart.find((item) => item.id === id) ? true : false;
+
+    //Agregamos el producto al carrito
+    const addToCart = (producto, qty) => {
+            if(isInCart(producto.id)){
+                
+                setCart(cart.map(prod => {
+                    return prod.id === producto.id ? {...prod, qty: (prod.qty += qty)} : prod;
+                })
+                ) //sumamos la cantidad si es el mismo producto
+            } else{
+                setCart([...cart, {...producto, qty}])}
     }
 
 
+    //Borramos un item del carrito
+    const deleteItem = (id) => {	
+        let newCart = cart.filter((prodCart)=> prodCart.id !== id);
+        setCart(newCart)
+    }
+
+
+    //Vaciamos el carrito
+    const removeList = () => {	
+        setCart([]);
+    }
+
+
+    //Calculo del precio total
+    const totalPrice = () =>{
+        return cart.reduce((prev, act)=> prev + act.qty * act.price ,0);
+    };
+
+
+    //Calculo de cantidad de productos
+    const totalItem = () =>{
+        let total = 0;
+        cart.forEach(itemInCart => {
+            total = total + itemInCart.qty
+        });
+        return total;
+    }
 
     return(
         <cartContext.Provider
-        value={{
-            quantity:state.quantity,
-            product:state.product,
-            productsAdded:state.productsAdded,
-            addToCart,
-        }}
-        >
+        value={{cart, addToCart, removeList, deleteItem, totalPrice, totalItem}}>
             {children}
         </cartContext.Provider>
     )
